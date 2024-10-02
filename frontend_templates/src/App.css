@@ -1,0 +1,34 @@
+.App {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.page-container{
+  width: 90%;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.navbar{
+  display: flex;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 10;
+}
+
+.navbar-box{
+  display: flex;
+  padding: 1% 0;
+  justify-content: space-between;
+  width: 20%;
+}
