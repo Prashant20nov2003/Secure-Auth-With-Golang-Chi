@@ -27,7 +27,7 @@
 
 ## 3. public.products Table
 <ul>
-  <li>product_id: A unique identifier for each product (primary key). This value is generated dynamically (e.g., using concat('P-', ...)).</li>
+  <li>product_id: A unique identifier for each product (primary key). This value is generated dynamically (e.g., using concat('PR-', ...)).</li>
   <li>user_id: A foreign key referencing the user_id field in the public.users table. This links the product to the user who created it.</li>
   <li>product_name: The name of the product.</li>
   <li>product_photo: A field that stores the path or identifier for the product's image.</li>
