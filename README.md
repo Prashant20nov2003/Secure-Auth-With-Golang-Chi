@@ -34,3 +34,42 @@
   <li>price: The price of the product, stored as an integer (e.g., in cents or the smallest currency unit).</li>
   <li>visibility: A boolean indicating whether the product is visible to other users or is hidden.</li>
 </ul>
+
+# Project Explanation
+![Project Explanation](https://github.com/chrisprojs/Secure-Auth-With-Golang-Chi/blob/main/documentation/betamart_secure_explanation.jpg)
+## Processes
+### 1. Register:
+Inputs: Username, Password, and Email.
+Output: Triggers an Email Verification Code generation, which is sent to the user's email for verification.
+
+### 2. Email Verification:
+<ul>
+  <li>Verifies the email using the Email Verification Code.</li>
+  <li>If verified:
+    <ul>
+      <li>Transitions to Verified Email status.</li>
+      <li>Generates an Authorization Token for secure access.</li>
+    </ul>
+  </li>
+  <li>If not verified within a certain time or expired::
+    <ul>
+      <li>Option to Resend Code is provided.</li>
+    </ul>
+  </li>
+</ul>
+
+### 3. Login:
+Inputs: Username and Password.
+Condition: Requires the email to be verified before allowing login.
+
+### 4. Forgot Password:
+Triggers the generation of a new Email Verification Code for password recovery.
+Follows a similar flow as email verification:
+Code can be Resent if expired.
+Once verified, transitions to Change Password.
+
+### 5. Change Password:
+Enables the user to update their password after successfully verifying the Email Verification Code for password recovery.
+
+### 6. Generate Email Token:
+Supports email-related actions such as verification and password recovery by creating secure, time-bound tokens.
