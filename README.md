@@ -1,5 +1,5 @@
 # Watch Explanation On Youtube
-![Watch the video](https://www.youtube.com/watch?v=mvTzupOIGl0)
+[![Watch the video](https://github.com/chrisprojs/Secure-Auth-With-Golang-Chi/blob/main/documentation/smtp.jpg)](https://www.youtube.com/watch?v=mvTzupOIGl0)
 
 # Database Diagram
 ![Database Diagram](https://github.com/chrisprojs/Secure-Auth-With-Golang-Chi/blob/main/documentation/betamart-database.png)
