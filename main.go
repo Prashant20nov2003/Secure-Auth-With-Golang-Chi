@@ -66,6 +66,8 @@ func main() {
 
 	// Email Verificaiton
 	apiRouter.With(httprate.LimitByIP(5, 1*time.Minute)).Post("/generate_email_verification", apiCfg.UserMiddleware(apiCfg.GenerateEmailVerification))
+	apiRouter.Post("/resend_email_code/{id}", apiCfg.ResendEmailVerificationCode)
+	apiRouter.Get("/email_verification/{id}", apiCfg.FetchEmailVerification)
 	apiRouter.With(httprate.LimitByIP(10, 1*time.Minute)).Post("/email_verification/{id}", apiCfg.VerifyEmailVerification)
 
 	// Update Security
@@ -88,7 +90,7 @@ func main() {
 
 	go StorageProxy()
 
-	log.Println("Server is running:", portString)
+	log.Printf("Server is running: http://localhost:%s", portString)
 
 	err = server.ListenAndServe()
 	if err != nil {

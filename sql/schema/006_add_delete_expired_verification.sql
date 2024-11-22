@@ -6,7 +6,7 @@ LANGUAGE plpgsql
 AS $$
 BEGIN
   DELETE FROM UserEmailVerifications
-  WHERE expires_at < NOW();
+  WHERE expires_at < CURRENT_TIMESTAMP;
 END;
 $$;
 -- +goose StatementEnd

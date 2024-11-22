@@ -77,6 +77,50 @@ func (q *Queries) CreateEmailVerification(ctx context.Context, arg CreateEmailVe
 	return i, err
 }
 
+const fetchEmailVerification = `-- name: FetchEmailVerification :one
+SELECT
+  EXTRACT(EPOCH FROM (expires_at - CURRENT_TIMESTAMP))::INTEGER as time_left
+FROM useremailverifications
+WHERE emailverify_id = $1
+`
+
+func (q *Queries) FetchEmailVerification(ctx context.Context, emailverifyID uuid.UUID) (int32, error) {
+	row := q.db.QueryRowContext(ctx, fetchEmailVerification, emailverifyID)
+	var time_left int32
+	err := row.Scan(&time_left)
+	return time_left, err
+}
+
+const resendEmailVerificationCode = `-- name: ResendEmailVerificationCode :one
+UPDATE UserEmailVerifications
+SET verif_code = $1, expires_at = CURRENT_TIMESTAMP + INTERVAL '60 seconds'
+FROM users
+WHERE UserEmailVerifications.emailverify_id = $2
+  AND users.user_id = UserEmailVerifications.user_id
+RETURNING
+UserEmailVerifications.emailverify_id,
+EXTRACT(EPOCH FROM (UserEmailVerifications.expires_at - CURRENT_TIMESTAMP))::INTEGER as time_left,
+users.email
+`
+
+type ResendEmailVerificationCodeParams struct {
+	VerifCode     string    `json:"verif_code"`
+	EmailverifyID uuid.UUID `json:"emailverify_id"`
+}
+
+type ResendEmailVerificationCodeRow struct {
+	EmailverifyID uuid.UUID `json:"emailverify_id"`
+	TimeLeft      int32     `json:"time_left"`
+	Email         string    `json:"email"`
+}
+
+func (q *Queries) ResendEmailVerificationCode(ctx context.Context, arg ResendEmailVerificationCodeParams) (ResendEmailVerificationCodeRow, error) {
+	row := q.db.QueryRowContext(ctx, resendEmailVerificationCode, arg.VerifCode, arg.EmailverifyID)
+	var i ResendEmailVerificationCodeRow
+	err := row.Scan(&i.EmailverifyID, &i.TimeLeft, &i.Email)
+	return i, err
+}
+
 const updateUserEmail = `-- name: UpdateUserEmail :one
 SELECT
   message::VARCHAR,

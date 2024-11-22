@@ -38,7 +38,7 @@ function Register() {
 
       if (response.ok) {
         console.log('Registration successful:', result);
-        navigate(`/email_verification/${result.email_verify_id}`);
+        navigate(`/email_verification/${result.emailverify_id}`);
       } else {
         console.error('Registration failed:', result);
         setError(response.status + " " + result.error)

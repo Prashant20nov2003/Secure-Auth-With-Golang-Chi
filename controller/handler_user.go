@@ -16,7 +16,7 @@ import (
 
 type VerifyLinkResponse struct {
 	Message       string `json:"message"`
-	EmailVerifyId string `json:"email_verify_id"`
+	EmailVerifyId string `json:"emailverify_id"`
 }
 
 type UserResponse struct {

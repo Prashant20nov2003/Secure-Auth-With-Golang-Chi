@@ -11,9 +11,9 @@ require (
 	golang.org/x/crypto v0.27.0
 )
 
-require github.com/google/uuid v1.6.0
-
 require (
-	github.com/cespare/xxhash/v2 v2.3.0 // indirect
-	github.com/go-chi/httprate v0.14.1 // indirect
+	github.com/go-chi/httprate v0.14.1
+	github.com/google/uuid v1.6.0
 )
+
+require github.com/cespare/xxhash/v2 v2.3.0 // indirect

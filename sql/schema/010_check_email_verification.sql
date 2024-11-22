@@ -23,7 +23,7 @@ BEGIN
   WITH emailverification AS (
     SELECT
       CASE
-        WHEN u.expires_at < NOW() THEN
+        WHEN u.expires_at < CURRENT_TIMESTAMP THEN
           'Code has been expired, please try again'
         WHEN u.attempts >= 3 THEN
           'Maximum attempts reached'

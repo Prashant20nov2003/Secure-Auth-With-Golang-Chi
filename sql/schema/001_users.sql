@@ -1,6 +1,7 @@
 -- +goose Up
 
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+SET TIMEZONE TO 'UTC'; 
 
 CREATE TABLE Users(
   user_id VARCHAR(40) PRIMARY KEY DEFAULT CONCAT('ID-', uuid_generate_v4()),
@@ -15,3 +16,4 @@ CREATE TABLE Users(
 DROP TABLE Users;
 
 DROP EXTENSION IF EXISTS "uuid-ossp";
+RESET TIMEZONE;
