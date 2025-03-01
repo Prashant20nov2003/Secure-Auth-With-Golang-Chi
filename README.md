@@ -38,8 +38,6 @@ Here, I'm making secure authentication with golang from scratch (Not using plugi
   <li>visibility: A boolean indicating whether the product is visible to other users or is hidden.</li>
 </ul>
 
-# Project Explanation
-![Project Explanation](https://github.com/chrisprojs/Secure-Auth-With-Golang-Chi/blob/main/documentation/betamart_secure_explanation.jpg)
 ## Processes
 ### 1. Register:
 Inputs: Username, Password, and Email.
