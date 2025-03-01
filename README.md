@@ -1,9 +1,6 @@
 # Introduction
 Here, I'm making secure authentication with golang from scratch (Not using plugin and copying other repositories), there are a lot of complexity in there such as encrypting password and digit code, sending email verification code with SMTP, and managing the cookie for storing the token.
 
-# Watch Explanation On Youtube
-[![Watch the video](https://github.com/chrisprojs/Secure-Auth-With-Golang-Chi/blob/main/documentation/smtp.jpg)](https://www.youtube.com/watch?v=mvTzupOIGl0)
-
 # Database Diagram
 ![Database Diagram](https://github.com/chrisprojs/Secure-Auth-With-Golang-Chi/blob/main/documentation/betamart-database.png)
 ## 1. public.users Table
