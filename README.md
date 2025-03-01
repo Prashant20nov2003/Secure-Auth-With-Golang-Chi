@@ -3,6 +3,9 @@ Here, I'm making secure authentication with golang from scratch (Not using plugi
 
 # Database Diagram
 ![Database Diagram](https://github.com/chrisprojs/Secure-Auth-With-Golang-Chi/blob/main/documentation/betamart-database.png)
+
+# Project Explanation
+![Project Explanation](https://github.com/chrisprojs/Secure-Auth-With-Golang-Chi/blob/main/documentation/betamart_secure_explanation.jpg)
 ## 1. public.users Table
 <ul>
   <li>user_id: A unique identifier for each user (primary key).</li>
